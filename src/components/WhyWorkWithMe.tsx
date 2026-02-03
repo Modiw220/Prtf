@@ -76,6 +76,21 @@ const WhyWorkWithMe = () => {
                         >
                             I bridge the gap between creative design and technical execution, ensuring your product looks great and performs flawlessly.
                         </motion.p>
+
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+                            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="relative mt-12 group"
+                        >
+                            <div className="absolute inset-0 bg-gold/20 blur-[60px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-700 pointer-events-none" />
+                            <img
+                                src="/why_me_illustration.png"
+                                alt="Why work with me illustration"
+                                className="relative z-10 w-full max-w-[320px] mx-auto lg:mx-0 rounded-2xl shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700"
+                            />
+                        </motion.div>
                     </div>
 
                     {/* Grid */}

@@ -414,6 +414,16 @@ const Footer = () => {
 // --- Page Components ---
 
 const Hero = () => {
+    const roles = ["Brand Designer", "Web Developer", "Product Manager", "Product Engineer"];
+    const [roleIndex, setRoleIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-[var(--header-height)] mt-[21px]">
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -426,9 +436,22 @@ const Hero = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-gold font-sans uppercase tracking-[0.3em] text-sm mb-4">Hey, I'm Mohamed Ashraf</h2>
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-tight">
+                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
                                 UI/UX & <br />
-                                <span className="text-gradient-gold">Brand Designer</span>
+                                <div className="inline-block relative">
+                                    <AnimatePresence mode="wait">
+                                        <motion.span
+                                            key={roleIndex}
+                                            initial={{ clipPath: "inset(0 100% 0 0)" }}
+                                            animate={{ clipPath: "inset(0 0% 0 0)" }}
+                                            exit={{ clipPath: "inset(0 0 0 100%)" }}
+                                            transition={{ duration: 0.8, ease: "easeInOut" }}
+                                            className="text-gradient-gold inline-block whitespace-nowrap"
+                                        >
+                                            {roles[roleIndex]}
+                                        </motion.span>
+                                    </AnimatePresence>
+                                </div>
                             </h1>
                         </motion.div>
 
@@ -491,7 +514,7 @@ const Hero = () => {
                                 transition={{ delay: 1, duration: 0.8 }}
                                 className="bg-card/80 backdrop-blur-md border border-white/10 p-4 rounded-xl space-y-1 shadow-2xl min-w-[160px]"
                             >
-                                <div className="text-3xl font-serif text-gold font-bold">8+</div>
+                                <div className="text-3xl font-serif text-gold font-bold">6+</div>
                                 <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Years Experience</div>
                             </motion.div>
 
@@ -559,7 +582,7 @@ const Services = () => {
             icon: <Smartphone className="text-gold w-8 h-8" />
         },
         {
-            title: "Seamless Prototyping",
+            title: "Outcome-Focused",
             desc: "Bringing ideas to life with interactive prototypes that validate concepts before development.",
             icon: <Cpu className="text-gold w-8 h-8" />
         }
@@ -576,7 +599,7 @@ const Services = () => {
                             className="p-8 bg-card border border-white/5 group hover:border-gold/30 transition-all duration-500 relative"
                         >
                             <div className="mb-6">{service.icon}</div>
-                            <h3 className="text-xl font-serif mb-4 group-hover:text-gold transition-colors">{service.title}</h3>
+                            <h3 className="text-lg md:text-xl font-serif mb-4 group-hover:text-gold transition-colors whitespace-nowrap">{service.title}</h3>
                             <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
                             <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <div className="w-1.5 h-1.5 rounded-full bg-gold glow-gold"></div>
@@ -604,6 +627,21 @@ const About = () => {
                         Digital Experiences <br />
                         That Actually Work
                     </motion.h2>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 }}
+                        className="mt-8"
+                    >
+                        <Link
+                            to="/projects"
+                            className="inline-flex items-center gap-2 group text-sm uppercase tracking-widest font-bold border-b border-gold pb-2 hover:text-gold transition-all duration-300"
+                        >
+                            View Work <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </Link>
+                    </motion.div>
                 </div>
 
                 <div className="lg:col-span-4 flex flex-col justify-end">
@@ -703,22 +741,24 @@ const Portfolio = () => {
 const Testimonials = () => {
     const testimonials = [
         {
-            name: "Sarah Jenkins",
-            role: "CEO at TechFlow",
-            text: "Working with Mohamed was a game-changer for our brand. He has an incredible eye for detail and really understands how to translate complex business goals into beautiful design.",
-            avatar: "https://i.pravatar.cc/150?u=sarah"
+            text: "Very quick, and top quality, exactly what I asked for!",
+            tags: ["Reliable", "Committed to Quality"]
         },
         {
-            name: "David Chen",
-            role: "Product Manager at Nexus",
-            text: "The dashboard Mohamed designed for us is not only stunning but has significantly improved our user engagement metrics. Highly recommend his strategic approach.",
-            avatar: "https://i.pravatar.cc/150?u=david"
+            text: "Perfect as usual Thanks Mohamed. Highly recommended",
+            tags: ["Committed to Quality"]
         },
         {
-            name: "Elena Rodriguez",
-            role: "Founder of Bloom",
-            text: "Mohamed delivered a brand identity that perfectly captures our vision. Professional, creative, and a true partner in our success. We couldn't be happier with the results.",
-            avatar: "https://i.pravatar.cc/150?u=elena"
+            text: "Super! Mohamed finished the work in no time. High quality and super responsive! Highly recommended!",
+            tags: ["Clear Communicator", "Committed to Quality", "Reliable"]
+        },
+        {
+            text: "Talented, super responsive and high time respective. I surely will work with him again.",
+            tags: ["Committed to Quality", "Clear Communicator", "Collaborative"]
+        },
+        {
+            text: "Excellent work from a professional freelancer. Thanks and looking forward to working together soon.",
+            tags: ["Committed to Quality", "Professional", "Collaborative"]
         }
     ];
 
@@ -734,7 +774,7 @@ const Testimonials = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="max-w-3xl mx-auto space-y-8">
                     {testimonials.map((t, idx) => (
                         <motion.div
                             key={idx}
@@ -742,30 +782,28 @@ const Testimonials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="bg-card/40 backdrop-blur-sm border border-white/5 p-8 rounded-2xl space-y-6 relative group hover:border-gold/20 transition-all duration-500"
+                            className="bg-card/40 backdrop-blur-sm border-2 border-white/5 p-10 rounded-2xl space-y-6 relative group hover:border-gold transition-all duration-500"
                         >
-                            <div className="flex gap-1">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                                ))}
-                            </div>
-
-                            <div className="flex justify-between items-start">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border border-gold/30">
-                                        <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-lg font-bold text-white">{t.name}</h4>
-                                        <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{t.role}</p>
-                                    </div>
+                            <div className="flex justify-between items-center">
+                                <div className="flex gap-1">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                                    ))}
                                 </div>
                                 <Quote className="w-8 h-8 text-gold/20 group-hover:text-gold/40 transition-colors" />
                             </div>
 
-                            <p className="text-muted-foreground leading-relaxed italic">
+                            <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed italic font-serif">
                                 "{t.text}"
                             </p>
+
+                            <div className="flex flex-wrap gap-3 pt-4 border-t border-white/5">
+                                {t.tags.map((tag, tagIdx) => (
+                                    <span key={tagIdx} className="px-3 py-1 border border-gold/20 text-gold text-[10px] uppercase tracking-widest font-bold rounded-sm">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </motion.div>
                     ))}
                 </div>
