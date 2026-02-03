@@ -818,23 +818,90 @@ const Contact = () => {
             {/* Background Decoration */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-            <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-                <h2 className="text-4xl md:text-7xl font-serif">Let's create something <span className="text-gold italic">extraordinary</span> together.</h2>
-                <p className="text-muted-foreground text-lg md:text-xl">Available for new projects and creative collaborations.</p>
-
-                <div className="pt-8">
-                    <a
-                        href="mailto:hello@solt.design"
-                        className="text-2xl md:text-4xl font-serif border-b-2 border-gold/30 hover:border-gold transition-all duration-300 pb-2 inline-block"
-                    >
-                        hello@solt.design
-                    </a>
+            <div className="max-w-3xl mx-auto space-y-12 relative z-10">
+                <div className="text-center space-y-4">
+                    <h2 className="text-4xl md:text-6xl font-serif">Let's create something <span className="text-gold italic">extraordinary</span> together.</h2>
+                    <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto font-sans leading-relaxed">
+                        Available for freelance projects, product design roles, and long-term collaboration.
+                    </p>
                 </div>
 
-                <div className="flex justify-center gap-8 pt-12">
-                    <Instagram className="w-6 h-6 text-muted-foreground hover:text-gold cursor-pointer transition-colors" />
-                    <Twitter className="w-6 h-6 text-muted-foreground hover:text-gold cursor-pointer transition-colors" />
-                    <Linkedin className="w-6 h-6 text-muted-foreground hover:text-gold cursor-pointer transition-colors" />
+                {/* Contact Form Card */}
+                <div className="bg-card/20 backdrop-blur-xl border border-white/5 p-6 md:p-10 rounded-2xl shadow-2xl">
+                    <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+                        {/* Name Field Group */}
+                        <div className="space-y-4">
+                            <label className="text-sm font-bold uppercase tracking-widest text-white/50">Name (required)</label>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="space-y-2">
+                                    <input
+                                        type="text"
+                                        placeholder="First Name"
+                                        className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold transition-colors text-lg placeholder:text-white/20"
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <input
+                                        type="text"
+                                        placeholder="Last Name"
+                                        className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold transition-colors text-lg placeholder:text-white/20"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Email Field */}
+                        <div className="space-y-4">
+                            <label className="text-sm font-bold uppercase tracking-widest text-white/50">Email (required)</label>
+                            <input
+                                type="email"
+                                className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold transition-colors text-lg placeholder:text-white/20"
+                                required
+                            />
+                        </div>
+
+                        {/* WhatsApp Field */}
+                        <div className="space-y-4">
+                            <label className="text-sm font-bold uppercase tracking-widest text-white/50">My Whatsapp Number (optional)</label>
+                            <input
+                                type="tel"
+                                className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold transition-colors text-lg placeholder:text-white/20"
+                            />
+                        </div>
+
+                        {/* Message Field */}
+                        <div className="space-y-4">
+                            <label className="text-sm font-bold uppercase tracking-widest text-white/50">Message (required)</label>
+                            <textarea
+                                rows={4}
+                                className="w-full bg-transparent border-b border-white/10 py-3 focus:outline-none focus:border-gold transition-colors text-lg placeholder:text-white/20 resize-none"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="pt-6">
+                            <button
+                                type="submit"
+                                className="bg-white text-black font-bold uppercase tracking-[0.2em] px-12 py-4 rounded-sm hover:bg-gold hover:text-black transition-all duration-300 transform active:scale-95 glow-white-hover"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div className="flex justify-center gap-12 pt-8">
+                    {[
+                        { icon: Instagram, href: "#" },
+                        { icon: Twitter, href: "#" },
+                        { icon: Linkedin, href: "#" }
+                    ].map((social, idx) => (
+                        <a key={idx} href={social.href} className="group">
+                            <social.icon className="w-6 h-6 text-white/40 group-hover:text-gold transition-all duration-300 transform group-hover:scale-110" />
+                        </a>
+                    ))}
                 </div>
             </div>
         </section>
