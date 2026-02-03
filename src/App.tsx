@@ -15,12 +15,9 @@ import {
     Cpu,
     ArrowLeft,
     ExternalLink,
-    Calendar,
     Users,
-    Tag,
     ChevronRight,
-    ChevronLeft,
-    CheckCircle2
+    ChevronLeft
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
@@ -278,7 +275,6 @@ const ScrollProgress = () => {
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
