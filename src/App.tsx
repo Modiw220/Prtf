@@ -411,7 +411,7 @@ const Footer = () => {
                             <Link to="/" className="w-12 h-12 block">
                                 <img src="/logo_v2.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert opacity-40" />
                             </Link>
-                        </div>
+                </div>
 
                         {/* Nav 1 + Business Inquiries */}
                         <div className="space-y-12">
@@ -1332,7 +1332,6 @@ const ProjectDetail = () => {
 };
 
 const AppContent = () => {
-    const location = useLocation();
     return (
         <div className="min-h-screen bg-background text-foreground scroll-smooth overflow-x-hidden">
             <ScrollToTop />
