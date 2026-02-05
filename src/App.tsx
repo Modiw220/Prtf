@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
+import SocialSidebar from './components/SocialSidebar';
 
 // --- Helper Styles ---
 const globalStyles = `
@@ -392,15 +393,95 @@ const Navbar = () => {
 };
 
 const Footer = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <footer className="py-12 px-6 md:px-12 border-t border-white/5 bg-black">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="text-xl font-serif font-bold">M.K<span className="text-gold">.</span></div>
-                <div className="text-[10px] uppercase tracking-widest text-muted-foreground text-center">
-                    © 2026 MOHAMED ASHRAF. ALL RIGHTS RESERVED.
+        <footer className="bg-black pt-24 pb-8 px-6 md:px-12 border-t border-white/5 relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gold/5 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto space-y-16 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                    {/* Brand & Nav Columns */}
+                    <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Logo/Brand */}
+                        <div className="space-y-6">
+                            <Link to="/" className="w-12 h-12 block">
+                                <img src="/logo_v2.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert opacity-40" />
+                            </Link>
+                        </div>
+
+                        {/* Nav 1 + Business Inquiries */}
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold font-sans">Menu</h4>
+                                <ul className="space-y-4">
+                                    {[{ label: 'Home', path: '/#home' },
+                                    { label: 'About Me', path: '/#about' },
+                                    { label: 'Services', path: '/#services' },
+                                    { label: 'Projects', path: '/projects' }].map((item) => (
+                                        <li key={item.label}>
+                                            <Link to={item.path} className="text-sm font-sans text-muted-foreground hover:text-gold transition-colors">
+                                                {item.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="space-y-2">
+                                <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold">Business inquiries</span>
+                                <p className="text-sm font-sans text-white/80">chachaw220@gmail.com</p>
+                            </div>
+                        </div>
+
+                        {/* Nav 2 + WhatsApp */}
+                        <div className="space-y-12">
+                            <div className="space-y-6">
+                                <h4 className="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold font-sans">Social</h4>
+                                <ul className="space-y-4">
+                                    {[{ name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-ashraf-4b82551b7/' },
+                                    { name: 'Upwork', url: 'https://www.upwork.com/freelancers/~01694abc04cb3923c0' },
+                                    { name: 'Behance', url: 'https://www.behance.net/modikhadra' },
+                                    { name: 'Instagram', url: 'https://www.instagram.com/modikhadra/' }].map((item) => (
+                                        <li key={item.name}>
+                                            <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-sm font-sans text-muted-foreground hover:text-gold transition-colors">
+                                                {item.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="space-y-2">
+                                <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold">What's App</span>
+                                <p className="text-sm font-sans text-white/80">+20 111 012 5361</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Large Brand Headline */}
+                    <div className="lg:col-span-6 lg:text-right">
+                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white/10 leading-none select-none">
+                            Let's build <br />
+                            The future
+                        </h2>
+                    </div>
                 </div>
-                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                    STAY CREATIVE.
+
+                {/* Bottom Bar */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="text-[10px] uppercase tracking-widest text-white/20 text-center flex-1">
+                        DESIGN BY MOHAMED ASHRAF COPYRIGHT © 2026. ALL RIGHTS RESERVED.
+                    </div>
+
+                    <button
+                        onClick={scrollToTop}
+                        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-gold hover:border-gold transition-all duration-300 group"
+                        title="Scroll to top"
+                    >
+                        <ArrowUpRight className="w-5 h-5 -rotate-45 group-hover:translate-y-[-2px] transition-transform" />
+                    </button>
                 </div>
             </div>
         </footer>
@@ -421,7 +502,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-[var(--header-height)] mt-[21px]">
+        <section id="home" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-[var(--header-height)] mt-[21px]">
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Left Content */}
                 <div className="lg:col-span-12 lg:grid lg:grid-cols-12 items-center gap-12">
@@ -585,7 +666,7 @@ const Services = () => {
     ];
 
     return (
-        <section className="py-32 px-6 md:px-12 bg-black">
+        <section id="services" className="py-32 px-6 md:px-12 bg-black">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {items.map((service, idx) => (
@@ -613,16 +694,19 @@ const About = () => {
         <section id="about" className="py-32 px-6 md:px-12 bg-deep-black overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
                 <div className="lg:col-span-8">
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight"
+                        className="space-y-4"
                     >
-                        Designing <span className="text-gold italic">Brands</span> & <br />
-                        Digital Experiences <br />
-                        That Actually Work
-                    </motion.h2>
+                        <span className="text-gold font-sans uppercase tracking-[0.3em] text-sm block">About Me</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight text-white/90">
+                            A Designer Who is <br />
+                            Focused on <span className="text-gold italic">Clarity</span> <br />
+                            and Real Impact
+                        </h2>
+                    </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -649,10 +733,10 @@ const About = () => {
                         className="space-y-6"
                     >
                         <p className="text-muted-foreground text-lg leading-relaxed font-light">
-                            I help brands and products translate complex ideas into clear, intuitive digital experiences that align user needs with business goals, creating meaningful value through thoughtful structure, clarity, and purpose across platforms.
+                            I’m a UI/UX and product designer focused on turning complex ideas into clear, scalable digital experiences, blending strategy, research, and design systems to help products grow, perform, and serve real user needs globally.
                         </p>
                         <p className="text-muted-foreground text-lg leading-relaxed font-light">
-                            By combining user research, strategic thinking, and precise execution, I design scalable solutions that balance aesthetics and performance, support long-term growth, and deliver consistent, measurable impact for real users and businesses.
+                            I work closely with founders, teams, and stakeholders, balancing business goals with user needs through thoughtful execution, fast iteration, and clear communication, delivering work that looks refined, functions smoothly, and scales over time.
                         </p>
                     </motion.div>
                 </div>
@@ -825,7 +909,7 @@ const Contact = () => {
 
             <div className="max-w-3xl mx-auto space-y-12 relative z-10">
                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-serif">Let's create something <span className="text-gold italic">extraordinary</span> together.</h2>
+                    <h2 className="text-4xl md:text-6xl font-serif">Let's create something <span className="text-gold italic">extraordinary</span> together</h2>
                     <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto font-sans leading-relaxed">
                         Available for freelance projects, product design roles, and long-term collaboration.
                     </p>
@@ -901,16 +985,10 @@ const Contact = () => {
                     </form>
                 </motion.div>
 
-                <div className="flex justify-center gap-12 pt-8">
-                    {[
-                        { icon: Instagram, href: "#" },
-                        { icon: Twitter, href: "#" },
-                        { icon: Linkedin, href: "#" }
-                    ].map((social, idx) => (
-                        <a key={idx} href={social.href} className="group">
-                            <social.icon className="w-6 h-6 text-white/40 group-hover:text-gold transition-all duration-300 transform group-hover:scale-110" />
-                        </a>
-                    ))}
+                <div className="pt-8 text-center">
+                    <p className="text-muted-foreground text-sm uppercase tracking-[0.3em] font-medium">
+                        Designed with <span className="text-gold">purpose</span>. Built to perform.
+                    </p>
                 </div>
             </div>
         </section>
@@ -1030,18 +1108,7 @@ const ProjectDetail = () => {
 
     return (
         <div className="min-h-screen bg-black overflow-x-hidden relative">
-            {/* Fixed Social Sidebar */}
-            <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-all duration-300">
-                    <Linkedin className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-all duration-300">
-                    <Globe className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-gold hover:border-gold transition-all duration-300">
-                    <Instagram className="w-4 h-4" />
-                </a>
-            </div>
+
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-20">
                 {/* Top Back Link */}
@@ -1265,11 +1332,13 @@ const ProjectDetail = () => {
 };
 
 const AppContent = () => {
+    const location = useLocation();
     return (
         <div className="min-h-screen bg-background text-foreground scroll-smooth overflow-x-hidden">
             <ScrollToTop />
             <ScrollProgress />
             <Navbar />
+            <SocialSidebar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<ProjectsPage />} />
