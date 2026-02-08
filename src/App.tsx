@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
-import SocialSidebar from './components/SocialSidebar';
+import SocialSidebar, { BehanceIcon, WhatsAppIcon, UpworkIcon } from './components/SocialSidebar';
 
 // --- Helper Styles ---
 const globalStyles = `
@@ -411,7 +411,7 @@ const Footer = () => {
                             <Link to="/" className="w-12 h-12 block">
                                 <img src="/logo_v2.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert opacity-40" />
                             </Link>
-                </div>
+                        </div>
 
                         {/* Nav 1 + Business Inquiries */}
                         <div className="space-y-12">
@@ -502,7 +502,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="home" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-[var(--header-height)] mt-[21px]">
+        <section id="home" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 pt-[var(--header-height)] mt-[21px] pb-32 lg:pb-0">
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {/* Left Content */}
                 <div className="lg:col-span-12 lg:grid lg:grid-cols-12 items-center gap-12">
@@ -668,16 +668,123 @@ const Services = () => {
     return (
         <section id="services" className="py-32 px-6 md:px-12 bg-black">
             <div className="max-w-7xl mx-auto">
+                <div className="mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-4"
+                    >
+                        <span className="text-gold font-sans uppercase tracking-[0.3em] text-sm block">my value</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight text-white/90">
+                            The <span className="text-gold italic">principles</span> that <br className="hidden lg:block" />
+                            guide how I design, <br />
+                            think, and deliver
+                        </h2>
+                    </motion.div>
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {items.map((service, idx) => (
                         <motion.div
                             key={idx}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 0.4,
+                                delay: idx * 0.1,
+                                ease: [0.4, 0, 0.2, 1]
+                            }}
                             whileHover={{ y: -10 }}
                             className="p-8 bg-card border border-white/5 group hover:border-gold/30 transition-all duration-500 relative"
                         >
                             <div className="mb-6">{service.icon}</div>
                             <h3 className="text-lg md:text-xl font-serif mb-4 group-hover:text-gold transition-colors whitespace-nowrap">{service.title}</h3>
                             <p className="text-muted-foreground text-sm leading-relaxed">{service.desc}</p>
+                            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div className="w-1.5 h-1.5 rounded-full bg-gold glow-gold"></div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const MyServices = () => {
+    const items = [
+        {
+            title: "Product UI/UX Design",
+            desc: "Designing intuitive, user-centered digital products from early discovery and concept definition to high-fidelity interfaces. I focus on clarity, usability, and scalable structures that help users move effortlessly while supporting real business objectives.",
+            tags: ["UI/UX", "User Research", "UX Flows", "Wireframing", "High-Fidelity UI", "Product Strategy", "SaaS"],
+            icon: <Smartphone className="text-gold w-8 h-8" />
+        },
+        {
+            title: "Brand Identity & Digital Branding",
+            desc: "Building cohesive, digital-first brand systems that translate values and positioning into consistent visual languages. My work connects brand identity with product experience to ensure recognition, trust, and long-term relevance across touchpoints.",
+            tags: ["Brand Strategy", "Identity Design", "Digital Branding", "Brand Systems", "Creative Direction"],
+            icon: <Globe className="text-gold w-8 h-8" />
+        },
+        {
+            title: "Design Systems & Scalable UI",
+            desc: "Creating flexible, reusable design systems that bring consistency across products and teams. I design components, patterns, and guidelines that speed up development, reduce friction, and allow products to scale without losing quality.",
+            tags: ["Design Systems", "UI Components", "Scalability", "Consistency", "Developer Handoff", "SPEED"],
+            icon: <Layers className="text-gold w-8 h-8" />
+        }
+    ];
+
+    return (
+        <section id="my-services" className="py-32 px-6 md:px-12 bg-deep-black">
+            <div className="max-w-7xl mx-auto">
+                <div className="mb-20 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="space-y-4"
+                    >
+                        <span className="text-gold font-sans uppercase tracking-[0.3em] text-sm block">my services</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight text-white/90 max-w-4xl mx-auto">
+                            I help teams design <br className="block md:hidden" />
+                            <span className="text-gold italic">clear</span>, <br className="block md:hidden" />
+                            scalable products <br className="block md:hidden" />
+                            built for <br className="block md:hidden" />
+                            high performance
+                        </h2>
+                    </motion.div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {items.map((service, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 12 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 0.4,
+                                delay: idx * 0.1,
+                                ease: [0.4, 0, 0.2, 1]
+                            }}
+                            whileHover={{ y: -10 }}
+                            className="p-8 bg-card border border-white/5 group hover:border-gold/30 transition-all duration-500 relative flex flex-col h-full"
+                        >
+                            <div className="mb-6">{service.icon}</div>
+                            <h3 className="text-lg md:text-xl font-serif mb-4 group-hover:text-gold transition-colors">{service.title}</h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow">{service.desc}</p>
+
+                            <div className="flex flex-wrap gap-x-2 gap-y-1 pt-6 border-t border-white/5 min-h-[80px] content-start justify-center text-center max-w-[260px] mx-auto">
+                                {service.tags.map((tag, tagIdx) => (
+                                    <span key={tagIdx} className="text-[10px] uppercase tracking-wider text-gold font-bold">
+                                        {tag} {tagIdx < service.tags.length - 1 && " ·"}
+                                    </span>
+                                ))}
+                            </div>
+
                             <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <div className="w-1.5 h-1.5 rounded-full bg-gold glow-gold"></div>
                             </div>
@@ -756,8 +863,8 @@ const Portfolio = () => {
             <div className="max-w-7xl mx-auto space-y-16">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                     <div className="space-y-6">
-                        <h2 className="text-4xl md:text-6xl font-bold font-serif italic">
-                            Featured <span className="text-gold">Work</span>
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+                            Featured <span className="text-gold italic">Work</span>
                         </h2>
                         <p className="text-muted-foreground text-lg max-w-2xl font-sans">
                             A collection of case studies focusing on UX research and high-fidelity UI design.
@@ -846,8 +953,8 @@ const Testimonials = () => {
         <section className="py-32 px-6 md:px-12 bg-black border-t border-white/5">
             <div className="max-w-7xl mx-auto space-y-16">
                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-serif">
-                        What My <span className="text-gold">Clients Say</span>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+                        What My <span className="text-gold italic">Clients Say</span>
                     </h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-sans">
                         Trusted by industry leaders and innovative startups to deliver high-impact digital solutions.
@@ -909,7 +1016,10 @@ const Contact = () => {
 
             <div className="max-w-3xl mx-auto space-y-12 relative z-10">
                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl md:text-6xl font-serif">Let's create something <span className="text-gold italic">extraordinary</span> together</h2>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight">
+                        Let's create something <br />
+                        <span className="text-gold italic">extraordinary</span> together
+                    </h2>
                     <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto font-sans leading-relaxed">
                         Available for freelance projects, product design roles, and long-term collaboration.
                     </p>
@@ -985,10 +1095,32 @@ const Contact = () => {
                     </form>
                 </motion.div>
 
-                <div className="pt-8 text-center">
+                <div className="pt-8 text-center space-y-8">
                     <p className="text-muted-foreground text-sm uppercase tracking-[0.3em] font-medium">
                         Designed with <span className="text-gold">purpose</span>. Built to perform.
                     </p>
+
+                    <div className="flex justify-center gap-8">
+                        {[
+                            { icon: Linkedin, href: "https://www.linkedin.com/in/mohamed-ashraf-4b82551b7/", name: "LinkedIn" },
+                            { icon: UpworkIcon, href: "https://www.upwork.com/freelancers/~01694abc04cb3923c0", name: "Upwork" },
+                            { icon: BehanceIcon, href: "https://www.behance.net/modikhadra", name: "Behance" },
+                            { icon: WhatsAppIcon, href: "http://wa.me/+201110125361", name: "WhatsApp" },
+                            { icon: Instagram, href: "https://www.instagram.com/modikhadra/", name: "Instagram" },
+                        ].map((social, idx) => (
+                            <motion.a
+                                key={idx}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ y: -4, scale: 1.1 }}
+                                className="text-white/40 hover:text-gold transition-all duration-300"
+                                title={social.name}
+                            >
+                                <social.icon className="w-6 h-6" />
+                            </motion.a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
@@ -1000,6 +1132,7 @@ const Home = () => {
         <main>
             <Hero />
             <Services />
+            <MyServices />
             <About />
             <WhyWorkWithMe />
             <Portfolio />
