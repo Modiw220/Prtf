@@ -17,7 +17,10 @@ import {
     ExternalLink,
     Users,
     ChevronRight,
-    ChevronLeft
+    ChevronLeft,
+    MousePointerClick,
+    Zap,
+    Layout
 } from 'lucide-react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useParams } from 'react-router-dom';
 import WhyWorkWithMe from './components/WhyWorkWithMe';
@@ -288,6 +291,7 @@ const Navbar = () => {
     const navLinks = [
         { name: "Home", href: "/" },
         { name: "About", href: "/#about" },
+        { name: "Services", href: "/#my-services" },
         { name: "Featured Work", href: "/#portfolio" },
         { name: "Full Portfolio", href: "/projects" }
     ];
@@ -462,10 +466,25 @@ const Footer = () => {
 
                     {/* Large Brand Headline */}
                     <div className="lg:col-span-6 lg:text-right">
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white/10 leading-none select-none">
+                        <motion.h2
+                            animate={{
+                                opacity: [0.3, 0.5, 0.3],
+                                filter: [
+                                    "drop-shadow(0 0 0px rgba(255,255,255,0))",
+                                    "drop-shadow(0 0 15px rgba(255,255,255,0.1))",
+                                    "drop-shadow(0 0 0px rgba(255,255,255,0))"
+                                ]
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                            className="text-5xl md:text-7xl lg:text-8xl font-serif leading-none select-none bg-gradient-to-r from-neutral-700 via-neutral-500 to-neutral-300 bg-clip-text text-transparent"
+                        >
                             Let's build <br />
                             The future
-                        </h2>
+                        </motion.h2>
                     </div>
                 </div>
 
@@ -568,7 +587,7 @@ const Hero = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: "easeOut" }}
-                            className="relative w-72 h-72 md:w-80 md:h-80 xl:w-96 xl:h-96"
+                            className="relative w-72 h-72 md:w-80 md:h-80 xl:w-96 xl:h-96 lg:-translate-x-12"
                         >
                             {/* Gold Ring Decoration */}
                             <div className="absolute inset-[-20px] border border-gold/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
@@ -718,21 +737,39 @@ const MyServices = () => {
     const items = [
         {
             title: "Product UI/UX Design",
-            desc: "Designing intuitive, user-centered digital products from early discovery and concept definition to high-fidelity interfaces. I focus on clarity, usability, and scalable structures that help users move effortlessly while supporting real business objectives.",
-            tags: ["UI/UX", "User Research", "UX Flows", "Wireframing", "High-Fidelity UI", "Product Strategy", "SaaS"],
-            icon: <Smartphone className="text-gold w-8 h-8" />
+            desc: "Designing clear, intuitive digital products from concept to polished interface—balancing user needs with business goals and building scalable experiences that feel effortless.",
+            tags: ["Product Strategy", "UX Flows", "Wireframing", "UI Design", "SaaS"],
+            icon: <Smartphone className="text-gold w-6 h-6" />
         },
         {
             title: "Brand Identity & Digital Branding",
-            desc: "Building cohesive, digital-first brand systems that translate values and positioning into consistent visual languages. My work connects brand identity with product experience to ensure recognition, trust, and long-term relevance across touchpoints.",
-            tags: ["Brand Strategy", "Identity Design", "Digital Branding", "Brand Systems", "Creative Direction"],
-            icon: <Globe className="text-gold w-8 h-8" />
+            desc: "Crafting cohesive, digital-first brand systems that turn strategy into strong visual identities, ensuring consistency, trust, and long-term recognition.",
+            tags: ["Brand Strategy", "Visual Identity", "Digital Branding", "Systems"],
+            icon: <Globe className="text-gold w-6 h-6" />
         },
         {
             title: "Design Systems & Scalable UI",
-            desc: "Creating flexible, reusable design systems that bring consistency across products and teams. I design components, patterns, and guidelines that speed up development, reduce friction, and allow products to scale without losing quality.",
-            tags: ["Design Systems", "UI Components", "Scalability", "Consistency", "Developer Handoff", "SPEED"],
-            icon: <Layers className="text-gold w-8 h-8" />
+            desc: "Building structured, reusable design systems that maintain consistency, accelerate development, and support seamless product growth.",
+            tags: ["Design Systems", "UI Components", "Scalability", "Handoff"],
+            icon: <Layers className="text-gold w-6 h-6" />
+        },
+        {
+            title: "Conversion-Driven Landing Pages",
+            desc: "Designing high-converting landing pages focused on user psychology, clear messaging, and strategic layouts that guide visitors toward action while maximizing leads and sales.",
+            tags: ["CONVERSION", "CRO", "LANDING PAGES", "PERFORMANCE"],
+            icon: <MousePointerClick className="text-gold w-6 h-6" />
+        },
+        {
+            title: "Mobile App UX",
+            desc: "Creating smooth, user-friendly mobile experiences with intuitive navigation, clean interactions, and modern UI patterns that improve engagement and retention across iOS and Android apps.",
+            tags: ["MOBILE UX", "APP DESIGN", "USER FLOWS", "USABILITY"],
+            icon: <Zap className="text-gold w-6 h-6" />
+        },
+        {
+            title: "CRM & Admin Panel Interfaces",
+            desc: "Designing structured dashboards and admin panels that simplify complex data, improve productivity, and deliver clean user experiences through organized layouts and scalable components.",
+            tags: ["DASHBOARDS", "ADMIN PANELS", "DATA VIZ", "CRM UX"],
+            icon: <Layout className="text-gold w-6 h-6" />
         }
     ];
 
@@ -749,16 +786,14 @@ const MyServices = () => {
                     >
                         <span className="text-gold font-sans uppercase tracking-[0.3em] text-sm block">my services</span>
                         <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight text-white/90 max-w-4xl mx-auto">
-                            I help teams design <br className="block md:hidden" />
-                            <span className="text-gold italic">clear</span>, <br className="block md:hidden" />
-                            scalable products <br className="block md:hidden" />
+                            Clear <span className="text-gold italic">scalable</span> products <br className="hidden lg:block" />
                             built for <br className="block md:hidden" />
                             high performance
                         </h2>
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {items.map((service, idx) => (
                         <motion.div
                             key={idx}
@@ -770,27 +805,64 @@ const MyServices = () => {
                                 delay: idx * 0.1,
                                 ease: [0.4, 0, 0.2, 1]
                             }}
-                            whileHover={{ y: -10 }}
-                            className="p-8 bg-card border border-white/5 group hover:border-gold/30 transition-all duration-500 relative flex flex-col h-full"
+                            whileHover={{ scale: 1.02, zIndex: 10 }}
+                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            className="p-6 md:p-8 bg-card/40 backdrop-blur-xl border border-white/5 group hover:border-gold/30 transition-all duration-300 relative flex flex-col md:flex-row gap-6 h-full"
                         >
-                            <div className="mb-6">{service.icon}</div>
-                            <h3 className="text-lg md:text-xl font-serif mb-4 group-hover:text-gold transition-colors">{service.title}</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-grow">{service.desc}</p>
-
-                            <div className="flex flex-wrap gap-x-2 gap-y-1 pt-6 border-t border-white/5 min-h-[80px] content-start justify-center text-center max-w-[260px] mx-auto">
-                                {service.tags.map((tag, tagIdx) => (
-                                    <span key={tagIdx} className="text-[10px] uppercase tracking-wider text-gold font-bold">
-                                        {tag} {tagIdx < service.tags.length - 1 && " ·"}
-                                    </span>
-                                ))}
+                            {/* Icon Container */}
+                            <div className="flex-shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-gold/5 border border-gold/10 flex items-center justify-center group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-500">
+                                    <div className="transform group-hover:scale-110 transition-transform duration-500">
+                                        {service.icon}
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <div className="w-1.5 h-1.5 rounded-full bg-gold glow-gold"></div>
+                            {/* Content Section */}
+                            <div className="flex flex-col h-full flex-grow">
+                                <div className="space-y-3 mb-6">
+                                    <h3 className="text-lg md:text-xl font-serif text-white/90 group-hover:text-gold transition-colors duration-300">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">
+                                        {service.desc}
+                                    </p>
+                                </div>
+
+                                {/* Tags Container - Forced Single Line */}
+                                <div className="flex flex-nowrap items-center gap-x-3 pt-6 border-t border-white/5 mt-auto overflow-hidden">
+                                    {service.tags.map((tag, tagIdx) => (
+                                        <span key={tagIdx} className="text-[9px] uppercase tracking-[0.2em] text-gold/60 group-hover:text-gold font-bold transition-colors duration-300 whitespace-nowrap shrink-0">
+                                            {tag} {tagIdx < service.tags.length - 1 && " ·"}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Floating Hover Indicator */}
+                            <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div className="w-1.5 h-1.5 rounded-full bg-gold glow-gold animate-pulse"></div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Section CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                    className="mt-16 flex justify-start"
+                >
+                    <Link
+                        to="/#contact"
+                        className="group flex items-center gap-4 bg-white text-black px-10 py-5 rounded-sm font-bold uppercase tracking-[0.3em] text-sm hover:bg-gold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(161,120,0,0.2)]"
+                    >
+                        start a project
+                        <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

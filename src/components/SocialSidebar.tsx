@@ -35,7 +35,22 @@ const SocialSidebar = () => {
             transition={{ delay: 1, duration: 0.8 }}
             className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col items-center gap-8"
         >
-            <div className="w-px h-24 bg-gradient-to-t from-gold to-transparent opacity-50" />
+            <motion.div
+                animate={{
+                    opacity: [0.3, 0.7, 0.3],
+                    boxShadow: [
+                        "0 0 0px rgba(161, 120, 0, 0)",
+                        "0 0 10px rgba(161, 120, 0, 0.5)",
+                        "0 0 0px rgba(161, 120, 0, 0)"
+                    ]
+                }}
+                transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="w-px h-24 bg-gradient-to-t from-gold to-transparent"
+            />
             <div className="flex flex-col gap-6">
                 {socials.map((social, idx) => (
                     <motion.a
@@ -51,7 +66,23 @@ const SocialSidebar = () => {
                     </motion.a>
                 ))}
             </div>
-            <div className="w-px h-24 bg-gradient-to-b from-gold to-transparent opacity-50" />
+            <motion.div
+                animate={{
+                    opacity: [0.3, 0.7, 0.3],
+                    boxShadow: [
+                        "0 0 0px rgba(161, 120, 0, 0)",
+                        "0 0 10px rgba(161, 120, 0, 0.5)",
+                        "0 0 0px rgba(161, 120, 0, 0)"
+                    ]
+                }}
+                transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5 // Offset the animation for a sequential pulse feel
+                }}
+                className="w-px h-24 bg-gradient-to-b from-gold to-transparent"
+            />
         </motion.div>
     );
 };
