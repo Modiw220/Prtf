@@ -805,8 +805,11 @@ const MyServices = () => {
                                 delay: idx * 0.1,
                                 ease: [0.4, 0, 0.2, 1]
                             }}
-                            whileHover={{ scale: 1.02, zIndex: 10 }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
+                            whileHover={{
+                                scale: 1.02,
+                                zIndex: 10,
+                                transition: { duration: 0.2, ease: "easeOut" }
+                            }}
                             className="p-6 md:p-8 bg-card/40 backdrop-blur-xl border border-white/5 group hover:border-gold/30 transition-all duration-300 relative flex flex-col md:flex-row gap-6 h-full"
                         >
                             {/* Icon Container */}
