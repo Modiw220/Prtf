@@ -176,7 +176,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="rounded-2xl overflow-hidden border border-gold/30">
+          <div className="mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden border border-gold/30">
             <img
               src="/mohamed_profile.jpg"
               alt="Mohamed Ashraf profile"
