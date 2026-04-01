@@ -33,7 +33,7 @@ const SocialSidebar = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col items-center gap-8"
+            className="fixed right-6 top-1/2 -translate-y-1/2 z-[100] hidden lg:flex flex-col items-center gap-8 pointer-events-none"
         >
             <motion.div
                 animate={{
@@ -59,8 +59,9 @@ const SocialSidebar = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ y: -4, scale: 1.1 }}
-                        className="text-white/40 hover:text-gold transition-all duration-300"
+                        className="pointer-events-auto text-white/40 hover:text-gold transition-all duration-300"
                         title={social.name}
+                        aria-label={social.name}
                     >
                         <social.icon className="w-5 h-5" />
                     </motion.a>
