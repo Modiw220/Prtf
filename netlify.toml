@@ -1,0 +1,11 @@
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Single-page app: send all routes to index.html so React Router can handle them
+# (e.g. /admin, /admin/inbox, /project/:slug on refresh or deep links).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
