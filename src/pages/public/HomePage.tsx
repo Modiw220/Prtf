@@ -201,7 +201,7 @@ export default function HomePage() {
             />
             <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-gold/30 shadow-[0_0_40px_rgba(212,175,55,0.25)]">
               <img
-                src="/mohamed_profile.jpg"
+                src="/mohamed_profile_transparent_v2.png"
                 alt="Mohamed Ashraf profile"
                 className="w-full h-full object-cover"
               />
@@ -210,8 +210,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="border-t border-white/10 mx-6 md:mx-12" />
+
       <section id="about" className="py-20 px-6 md:px-12 bg-deep-black">
         <div className="max-w-5xl mx-auto space-y-6">
+          <p className="text-xs uppercase tracking-[0.35em] text-gold">About me</p>
           <h2 className="text-4xl md:text-6xl font-serif">
             Built on <span className="text-gold italic">clarity</span> and measurable impact
           </h2>
@@ -231,7 +234,7 @@ export default function HomePage() {
               <h2 className="text-4xl md:text-6xl font-serif">
                 Featured <span className="text-gold italic">Work</span>
               </h2>
-              <p className="text-muted-foreground mt-3">Live from Supabase. Updated from the admin dashboard.</p>
+              <p className="text-muted-foreground mt-3">Designed to spark curiosity, these are the projects that bring ideas to life.</p>
             </div>
             <Link to="/projects" className="text-xs uppercase tracking-widest text-gold hover:text-gold-hover">
               View all
