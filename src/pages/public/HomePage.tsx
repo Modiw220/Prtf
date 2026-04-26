@@ -225,6 +225,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="my-services" className="py-24 px-6 md:px-12 bg-black">
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold mb-4">My Services</p>
+            <h2 className="text-4xl md:text-6xl font-serif">
+              What I <span className="text-gold italic">offer</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: 'UI Design',
+                description: 'Creating intuitive, accessible interfaces that users love. From wireframes to high-fidelity designs with complete design systems.',
+                icon: '✨'
+              },
+              {
+                title: 'UX Strategy',
+                description: 'Research-backed user experience strategies. I dig deep into user behaviors, pain points, and goals to inform design decisions.',
+                icon: '🎯'
+              },
+              {
+                title: 'Product Design',
+                description: 'End-to-end product design from concept to launch. I align design with business goals to create products that users actually want.',
+                icon: '🚀'
+              },
+              {
+                title: 'Brand Design',
+                description: 'Comprehensive brand systems including identity, guidelines, and collateral. Establishing cohesive visual languages that resonate.',
+                icon: '🎨'
+              }
+            ].map((service) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="group border border-white/10 rounded-lg p-6 hover:border-gold/50 transition-all bg-card/20 hover:bg-card/40"
+              >
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-serif mb-3 group-hover:text-gold transition-colors">{service.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <WhyWorkWithMe />
 
       <section id="portfolio" className="py-24 px-6 md:px-12 bg-black">
