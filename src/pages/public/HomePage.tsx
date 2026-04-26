@@ -176,13 +176,37 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden border border-gold/30">
-            <img
-              src="/mohamed_profile.jpg"
-              alt="Mohamed Ashraf profile"
-              className="w-full h-full object-cover aspect-[4/5]"
+          <motion.div
+            animate={{ y: [0, -10, 0, 10, 0], rotate: [0, 1.2, 0, -1.2, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+            className="mx-auto relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96"
+          >
+            <motion.div
+              aria-hidden
+              animate={{ rotate: 360 }}
+              transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
+              className="absolute inset-0 rounded-full border-2 border-gold/45"
             />
-          </div>
+            <motion.div
+              aria-hidden
+              animate={{ rotate: -360 }}
+              transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+              className="absolute inset-3 rounded-full border border-gold/20 border-dashed"
+            />
+            <motion.div
+              aria-hidden
+              animate={{ scale: [1, 1.06, 1], opacity: [0.45, 0.15, 0.45] }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute inset-0 rounded-full bg-gold/10 blur-xl"
+            />
+            <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-gold/30 shadow-[0_0_40px_rgba(212,175,55,0.25)]">
+              <img
+                src="/mohamed_profile.jpg"
+                alt="Mohamed Ashraf profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
