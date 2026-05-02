@@ -201,7 +201,7 @@ export default function HomePage() {
             />
             <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-gold/30 shadow-[0_0_40px_rgba(212,175,55,0.25)]">
               <img
-                src="/mohamed_profile_transparent_v2.png"
+                src="/mohamed_profile.jpg"
                 alt="Mohamed Ashraf profile"
                 className="w-full h-full object-cover"
               />
