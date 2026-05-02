@@ -213,15 +213,25 @@ export default function HomePage() {
       <div className="border-t border-white/10 mx-6 md:mx-12" />
 
       <section id="about" className="py-20 px-6 md:px-12 bg-deep-black">
-        <div className="max-w-5xl mx-auto space-y-6">
-          <p className="text-xs uppercase tracking-[0.35em] text-gold">About me</p>
-          <h2 className="text-4xl md:text-6xl font-serif">
-            Built on <span className="text-gold italic">clarity</span> and measurable impact
-          </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            I work with founders and teams to shape better product journeys, from strategy and UX architecture to scalable
-            interfaces. Every decision is validated through usability, business goals, and long-term maintainability.
-          </p>
+        <div className="max-w-7xl mx-auto space-y-12">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold">About me</p>
+            <h2 className="text-4xl md:text-6xl font-serif">
+              Built on <span className="text-gold italic">clarity</span> and measurable impact
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Senior UI/UX Designer with 6+ years of experience crafting conversion-focused web and mobile products. I help businesses turn ideas into user-centered, high-performing solutions through UX research, wireframing, prototyping, and scalable design systems using Figma.
+              </p>
+            </div>
+            <div>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                I focus on aligning design with business goals; optimizing navigation, hierarchy, and CTAs to drive engagement, improve conversions, and create clear, impactful digital experiences.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
