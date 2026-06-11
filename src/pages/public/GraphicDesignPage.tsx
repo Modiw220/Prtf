@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 
 export default function GraphicDesignPage() {
   const deliveGoSlides = [
@@ -70,11 +70,11 @@ export default function GraphicDesignPage() {
   const [pioneersCurrent, setPioneersCurrent] = useState(0);
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
-  function handlePrev(slides: string[], current: number, setCurrent: (c: number) => void) {
+  function handlePrev(slides: string[], setCurrent: Dispatch<SetStateAction<number>>) {
     setCurrent((c) => (c - 1 + slides.length) % slides.length);
   }
 
-  function handleNext(slides: string[], current: number, setCurrent: (c: number) => void) {
+  function handleNext(slides: string[], setCurrent: Dispatch<SetStateAction<number>>) {
     setCurrent((c) => (c + 1) % slides.length);
   }
 
@@ -88,7 +88,7 @@ export default function GraphicDesignPage() {
     title: string;
     slides: string[];
     current: number;
-    setCurrent: (c: number) => void;
+    setCurrent: Dispatch<SetStateAction<number>>;
     openLightbox: (src: string) => void;
   }) => (
     <article className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
@@ -102,7 +102,7 @@ export default function GraphicDesignPage() {
           <button
             onClick={(event) => {
               event.stopPropagation();
-              handlePrev(slides, current, setCurrent);
+              handlePrev(slides, setCurrent);
             }}
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 active:scale-90 active:bg-gold/70"
             aria-label="Previous"
@@ -112,7 +112,7 @@ export default function GraphicDesignPage() {
           <button
             onClick={(event) => {
               event.stopPropagation();
-              handleNext(slides, current, setCurrent);
+              handleNext(slides, setCurrent);
             }}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 active:scale-90 active:bg-gold/70"
             aria-label="Next"
