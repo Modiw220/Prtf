@@ -169,12 +169,6 @@ export default function GraphicDesignPage() {
             >
               Back to Home
             </Link>
-            <Link
-              to="/projects"
-              className="px-6 py-3 bg-gold text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-gold-hover transition-all rounded-sm"
-            >
-              View Full Portfolio
-            </Link>
           </div>
         </section>
 
