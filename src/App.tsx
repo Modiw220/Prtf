@@ -3,6 +3,7 @@ import AppShell from './components/layout/AppShell';
 import HomePage from './pages/public/HomePage';
 import ProjectsPage from './pages/public/ProjectsPage';
 import ProjectDetailPage from './pages/public/ProjectDetailPage';
+import GraphicDesignPage from './pages/public/GraphicDesignPage';
 import AdminLoginPage from './pages/auth/AdminLoginPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProjectEditorPage from './pages/admin/AdminProjectEditorPage';
@@ -18,6 +19,7 @@ function App() {
           <Route element={<AppShell />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/graphic-design" element={<GraphicDesignPage />} />
             <Route path="/project/:slug" element={<ProjectDetailPage />} />
             <Route path="/admin/login" element={<AdminLoginPage />} />
             <Route element={<ProtectedRoute />}>

@@ -8,6 +8,7 @@ const navLinks = [
   { name: 'Services', href: '/#my-services' },
   { name: 'Featured Work', href: '/#portfolio' },
   { name: 'Full Portfolio', href: '/projects' },
+  { name: 'Graphic Design', href: '/graphic-design' },
 ];
 
 export default function Navbar() {
