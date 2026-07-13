@@ -10,15 +10,19 @@ This project is a dynamic portfolio powered by Supabase. Public project pages ar
 
 ## Environment
 
-Create a `.env.local` file:
+For local development, create a `.env.local` file (see `.env.example`).
 
-```bash
-VITE_SUPABASE_URL=https://mfsesrkpjjcjbrueemeu.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
-VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
-```
+Production builds use `.env.production` (committed public client keys). Vite inlines these at build time for Vercel.
+
+## Deploy on Vercel
+
+1. Import the GitHub repo in [Vercel](https://vercel.com/new).
+2. Framework preset: **Vite** (auto-detected). Build: `npm run build`. Output: `dist`.
+3. Deploy. SPA routes are handled by `vercel.json` rewrites.
+4. Point the custom domain (`mohamedashrafkhadra.com`) to Vercel in Project → Settings → Domains.
+5. In Supabase → Authentication → URL configuration, add the Vercel URL and custom domain to **Site URL** / **Redirect URLs**.
+
+Optional: override env vars in Vercel → Settings → Environment Variables (`VITE_*`). Project values override `.env.production` when set.
 
 ## Supabase Setup
 
