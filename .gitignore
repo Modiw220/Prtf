@@ -27,3 +27,10 @@ env
 *.sln
 *.sw?
 .cursor/mcp.json
+
+# Agent handoff (local only)
+AGENT_HANDOFF.md
+AGENT_CONTEXT.md
+AGENTS.md
+CLAUDE.md
+AGENT_WORK/
